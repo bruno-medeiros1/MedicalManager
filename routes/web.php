@@ -15,9 +15,11 @@ Route::get('/', function () {
     return view('home');
 });
 
-
 Route::get('/page', function () {
-    return view('page');
+    if (Auth::check()) {
+        return view('page');
+    }
+    return view('/includes/error');
 });
 
 Auth::routes();

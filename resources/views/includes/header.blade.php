@@ -72,7 +72,6 @@
                         @endif
                     @else
                     <!-- Autenticado -->
-
                         <div class="dropdown text-end">
                             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
@@ -84,7 +83,10 @@
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        Terminar Sessão
+                                        <svg class="bi" width="32" height="32" fill="currentColor">
+                                            <use xlink:href="bootstrap-icons.svg#shop"/>
+                                        </svg>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
