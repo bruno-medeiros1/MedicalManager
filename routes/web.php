@@ -19,3 +19,7 @@ Route::get('/', function () {
 Route::get('/page', function () {
     return view('page');
 });
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
