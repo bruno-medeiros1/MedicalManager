@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Unidades de Saúde</h5>
                         <p class="card-text">Aqui poderás desde criar, editar, apagar e visualizar todas as unidades de saúde existentes.</p>
-                        <a href="#" class="btn btn-primary">Configurar</a>
+                        <a href="/MedicalManager/public/admin/unidades/index" class="btn btn-primary">Configurar</a>
                     </div>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Pessoal Médico</h5>
                         <p class="card-text">Aqui poderás desde criar, editar, apagar e visualizar todo o pessoal médico existente.</p>
-                        <a href="#" class="btn btn-primary">Configurar</a>
+                        <a href="/MedicalManager/public/admin/pessoal/index" class="btn btn-primary">Configurar</a>
                     </div>
                 </div>
             </div>
@@ -48,7 +48,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Tipo de Pessoal Médico</h5>
                         <p class="card-text">Aqui poderás desde criar, editar, apagar e visualizar todo os tipos de pessoal médico existentes.</p>
-                        <a href="#" class="btn btn-primary">Configurar</a>
+                        <a href="/MedicalManager/public/admin/tipo/index" class="btn btn-primary">Configurar</a>
                     </div>
                 </div>
             </div>
