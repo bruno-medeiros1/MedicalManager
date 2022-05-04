@@ -84,9 +84,7 @@
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Terminar Sessão
-                                        <svg class="bi" width="32" height="32" fill="currentColor">
-                                            <use xlink:href="bootstrap-icons.svg#shop"/>
-                                        </svg>
+                                        <i class="bi bi-box-arrow-in-right"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
