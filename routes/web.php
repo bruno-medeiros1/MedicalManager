@@ -43,6 +43,27 @@ Route::get('/unidades/index', function () {
     return view('/includes/error');
 });
 
+Route::get('/mapas/index', function () {
+    if (Auth::check()) {
+        return view('/mapas/index');
+    }
+    return view('/includes/error');
+});
+
+Route::get('/admin/index', function () {
+    if (Auth::check()) {
+        return view('/admin/index');
+    }
+    return view('/includes/error');
+});
+
+Route::get('/admin/especialidades/index', function () {
+    if (Auth::check()) {
+        return view('/admin/especialidades/index');
+    }
+    return view('/includes/error');
+});
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

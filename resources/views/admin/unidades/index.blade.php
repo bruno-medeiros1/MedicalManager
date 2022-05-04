@@ -5,20 +5,20 @@
         <div class="row h-100">
             <div class="col-3 shadow p-3">
                 <nav id="sidebar">
-                    <span style="color: #636b6f;font-family: 'Nunito', sans-serif;font-weight: 300;font-size: 24px;display: table;margin: 0 auto;">Fichas Médicas<hr></span>
+                    <span style="color: #636b6f;font-family: 'Nunito', sans-serif;font-weight: 300;font-size: 24px;display: table;margin: 0 auto;">Unidades de Saúde<hr></span>
 
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/fichas/index">Adicionar ficha</a>
+                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/unidades/index">Adicionar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/fichas/edit">Editar ficha</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/unidades/edit">Editar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/fichas/delete">Apagar ficha</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/unidades/delete">Apagar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/fichas/list">Visualizar fichas</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/unidades/list">Visualizar unidades</a>
                         </li>
                     </ul>
                 </nav>

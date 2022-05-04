@@ -2,25 +2,23 @@
 
 @section('content')
     <div class="container">
-
-        <!-- Sidebar Definições da Conta-->
         <div class="row h-100">
             <div class="col-3 shadow p-3">
                 <nav id="sidebar">
-                        <span style="color: #636b6f;font-family: 'Nunito', sans-serif;font-weight: 300;font-size: 24px;display: table;margin: 0 auto;">Especialidades Médicas<hr></span>
-                    <!-- Side  Menu -->
+                    <span style="color: #636b6f;font-family: 'Nunito', sans-serif;font-weight: 300;font-size: 24px;display: table;margin: 0 auto;">Mapas de Análise<hr></span>
+
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/especialidades/index">Adicionar especialidade</a>
+                        <li class="mt-3 justify-content-center">
+                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/consultas/index">Adicionar mapa</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/edit">Editar especialidade</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/consultas/edit">Editar mapa</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/delete">Apagar especialidade</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/consultas/delete">Apagar mapa</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/list">Visualizar especialidades</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/consultas/list">Visualizar mapas</a>
                         </li>
                     </ul>
                 </nav>
@@ -37,4 +35,6 @@
                 </div>
             </div>
         </div>
+
+    </div>
 @endsection
