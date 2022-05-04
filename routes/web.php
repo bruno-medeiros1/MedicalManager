@@ -15,9 +15,30 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('/page', function () {
+Route::get('/consultas/index', function () {
     if (Auth::check()) {
-        return view('page');
+        return view('/consultas/index');
+    }
+    return view('/includes/error');
+});
+
+Route::get('/especialidades/index', function () {
+    if (Auth::check()) {
+        return view('/especialidades/index');
+    }
+    return view('/includes/error');
+});
+
+Route::get('/fichas/index', function () {
+    if (Auth::check()) {
+        return view('/fichas/index');
+    }
+    return view('/includes/error');
+});
+
+Route::get('/unidades/index', function () {
+    if (Auth::check()) {
+        return view('/unidades/index');
     }
     return view('/includes/error');
 });

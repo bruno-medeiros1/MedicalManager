@@ -10,7 +10,6 @@
 <html>
 
 <head>
-    <!-- css Classes-->
     <style>
         .nav-pills > li > a.active {
             background-color: #1a4872 !important;
@@ -19,31 +18,45 @@
 </head>
 
 <body>
-    <!-- NAVBAR-->
-    <!-- border: 2px solid black-->
     <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm">
         <div class="container-fluid">
-
             <a class="navbar-brand" href="{{ url('/') }}">
                 <a href="/MedicalManager/public" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
 
                     <!-- As imagens devem ser inseridas na pasta public-->
                     <img src="{{ asset('Images/medical_icon.png') }}" alt="medicalManager" width="50" height="50">
                     <span class="fs-3" style="font-weight: bold;">Medical Manager</span>
+
                     @guest
                     @else
                         <ul class="nav nav-pills col-12 col-lg-auto me-lg-auto ps-3">
                             <li class="nav-item">
-                                <a class="nav-link px-2 link-secondary active" aria-current="page" href="/MedicalManager/public/page">Consultas</a>
+                                @if(Request::url() === 'http://localhost/MedicalManager/public/consultas/index')
+                                    <a class="nav-link px-2 link-secondary active" aria-current="page" href="/MedicalManager/public/consultas/index">Consultas</a>
+                                @else
+                                    <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/consultas/index">Consultas</a>
+                                @endif
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 link-secondary" aria-current="page" href="#">Fichas Médicas</a>
+                                @if(Request::url() === 'http://localhost/MedicalManager/public/fichas/index')
+                                    <a class="nav-link px-2 link-secondary active" aria-current="page" href="/MedicalManager/public/fichas/index">Fichas Médicas</a>
+                                @else
+                                    <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/fichas/index">Fichas Médicas</a>
+                                @endif
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 link-secondary" aria-current="page" href="#">Unidades de Saúde</a>
+                                @if(Request::url() === 'http://localhost/MedicalManager/public/unidades/index')
+                                    <a class="nav-link px-2 link-secondarya active" aria-current="page" href="/MedicalManager/public/unidades/index">Unidades de Saúde</a>
+                                @else
+                                    <a class="nav-link px-2 link-secondary" aria-current="page" href="/MedicalManager/public/unidades/index">Unidades de Saúde</a>
+                                @endif
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link px-2 link-secondary" aria-current="page" href="#">Especialidades Médicas</a>
+                                @if(Request::url() === 'http://localhost/MedicalManager/public/especialidades/index')
+                                    <a class="nav-link px-2 link-secondary active" aria-current="page" href="/MedicalManager/public/especialidades/index">Especialidades Médicas</a>
+                                @else
+                                    <a class="nav-link px-2 link-secondary" aria-current="page" href="/MedicalManager/public/especialidades/index">Especialidades Médicas</a>
+                                @endif
                             </li>
                         </ul>
                     @endguest
