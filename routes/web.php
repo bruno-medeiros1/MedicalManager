@@ -22,34 +22,6 @@ Route::get('/consultas/index', function () {
     return view('/includes/error');
 });
 
-Route::get('/especialidades/index', function () {
-    if (Auth::check()) {
-        return view('/especialidades/index');
-    }
-    return view('/includes/error');
-});
-
-Route::get('/fichas/index', function () {
-    if (Auth::check()) {
-        return view('/fichas/index');
-    }
-    return view('/includes/error');
-});
-
-Route::get('/unidades/index', function () {
-    if (Auth::check()) {
-        return view('/unidades/index');
-    }
-    return view('/includes/error');
-});
-
-Route::get('/mapas/index', function () {
-    if (Auth::check()) {
-        return view('/mapas/index');
-    }
-    return view('/includes/error');
-});
-
 Route::get('/admin/index', function () {
     if (Auth::check()) {
         return view('/admin/index');

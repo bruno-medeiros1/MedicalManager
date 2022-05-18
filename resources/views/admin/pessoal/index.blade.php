@@ -10,16 +10,16 @@
 
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/especialidades/index">Adicionar utilizador</a>
+                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="{{ URL::to("/admin/pessoal/index")}}">Adicionar utilizador</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/edit">Editar utilizador</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/pessoal/edit")}}">Editar utilizador</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/delete">Apagar utilizador</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/pessoal/delete")}}">Apagar utilizador</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/list">Visualizar utilizadores</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/pessoal/list")}}">Visualizar utilizadores</a>
                         </li>
                     </ul>
                 </nav>

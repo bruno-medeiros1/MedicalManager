@@ -9,16 +9,16 @@
 
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
                         <li class="mt-3 justify-content-center">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/consultas/index">Adicionar consulta</a>
+                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="{{ URL::to("/consultas/index")}}">Adicionar consulta</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/consultas/edit">Editar consulta</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consultas/edit")}}">Editar consulta</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/consultas/delete">Apagar consulta</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consultas/delete")}}">Apagar consulta</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/consultas/list">Visualizar consultas</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consultas/list")}}">Visualizar consultas</a>
                         </li>
                     </ul>
                 </nav>

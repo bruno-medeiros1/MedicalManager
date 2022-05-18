@@ -9,16 +9,16 @@
 
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/unidades/index">Adicionar unidade</a>
+                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="{{ URL::to("/admin/unidades/index")}}">Adicionar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/unidades/edit">Editar unidade</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/unidades/edit")}}">Editar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/unidades/delete">Apagar unidade</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/unidades/delete")}}">Apagar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/unidades/list">Visualizar unidades</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/unidades/list")}}">Visualizar unidades</a>
                         </li>
                     </ul>
                 </nav>

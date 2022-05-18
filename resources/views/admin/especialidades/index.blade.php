@@ -10,16 +10,16 @@
 
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="/MedicalManager/public/especialidades/index">Adicionar especialidade</a>
+                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="{{ URL::to("/admin/especialidades/index")}}">Adicionar especialidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/edit">Editar especialidade</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/especialidades/edit")}}">Editar especialidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/delete">Apagar especialidade</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/especialidades/delete")}}">Apagar especialidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="/MedicalManager/public/especialidades/list">Visualizar especialidades</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/especialidades/list")}}">Visualizar especialidades</a>
                         </li>
                     </ul>
                 </nav>
