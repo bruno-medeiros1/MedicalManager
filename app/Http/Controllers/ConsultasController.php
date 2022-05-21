@@ -2,84 +2,94 @@
 
 namespace App\Http\Controllers;
 
-use App\Consultas;
+use App\Models\Consultas;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 
 class ConsultasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function add_customer_form()
     {
-        //
+        if( \View::exists('customer.create') ){
+
+            return view('customer.create');
+
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function submit_customer_data(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required|min:6',
+            'email' => 'required|email|unique:customers'
+        ];
+
+        $errorMessage = [
+            'required' => 'Enter your :attribute first.'
+        ];
+
+        $this->validate($request, $rules, $errorMessage);
+
+        Customer::create([
+            'name' => $request->name,
+            'slug' => \Str::slug($request->name),
+            'email' => strtolower($request->email)
+        ]);
+
+        $this->meesage('message','Customer created successfully!');
+        return redirect()->back();
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function fetch_all_customer()
     {
-        //
+        $consultas = Consultas::toBase()->get();
+        return view('consultas.index',compact('consultas'));
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Consultas  $consultas
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Consultas $consultas)
+    public function edit_customer_form(Customer $customer)
     {
-        //
+        return view('customer.edit',compact('customer'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Consultas  $consultas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Consultas $consultas)
+    public function edit_customer_form_submit(Request $request, Customer $customer)
     {
-        //
+        $rules = [
+            'name' => 'required|min:6',
+            'email' => 'required|email|unique:customers'
+        ];
+
+        $errorMessage = [
+            'required' => 'Enter your :attribute first.'
+        ];
+
+        $this->validate($request, $rules, $errorMessage);
+
+        $customer->update([
+            'name' => $request->name,
+            'email' => strtolower($request->email)
+        ]);
+
+        $this->meesage('message','Customer updated successfully!');
+        return redirect()->back();
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Consultas  $consultas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Consultas $consultas)
+    public function view_single_customer(Customer $customer)
     {
-        //
+        return view('customer.view',compact('customer'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Consultas  $consultas
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Consultas $consultas)
+    public function delete_customer(Customer $customer)
     {
-        //
+        $customer->delete();
+        $this->meesage('message','Customer deleted successfully!');
+        return redirect()->back();
+    }
+
+    public function meesage(string $name = null, string $message = null)
+    {
+        return session()->flash($name,$message);
     }
 }

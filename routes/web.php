@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ConsultasController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,12 +17,14 @@ Route::get('/', function () {
     return view('home');
 });
 
+/*
 Route::get('/consultas/index', function () {
     if (Auth::check()) {
         return view('/consultas/index');
     }
     return view('/includes/error');
 });
+*/
 
 Route::get('/admin/index', function () {
     if (Auth::check()) {
@@ -60,3 +64,17 @@ Route::get('/admin/tipo/index', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+//***********************************************************
+
+// ConsultasController.php
+
+Route::get('/consulta', 'ConsultasController@add_customer_form')->name('consulta.add');
+Route::post('/consulta', 'ConsultasController@submit_customer_data')->name('consulta.save');
+
+Route::get('/consulta/list', 'ConsultasController@fetch_all_customer')->name('consulta.list');
+
+Route::get('/consulta/edit/{consulta}', 'ConsultasController@edit_customer_form')->name('consulta.edit');
+Route::patch('/consulta/edit/{consulta}', 'ConsultasController@edit_customer_form_submit')->name('consulta.update');
+Route::get('/consulta/{consulta}', 'ConsultasController@view_single_customer')->name('consulta.view');
+Route::delete('/consulta/{consulta}', 'ConsultasController@delete_customer')->name('consulta.delete');

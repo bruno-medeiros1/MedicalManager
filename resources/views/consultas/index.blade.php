@@ -23,18 +23,29 @@
                     </ul>
                 </nav>
             </div>
-
-            <div class="col-9 justify-content-center">
-                <div class="p-5 mb-4 bg-light rounded-3">
-                    <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">Site em manutenção</h1>
-                        <p class="col-md-8 fs-4">O website ainda se encontra em fase de desenvolvimento</p>
-                        <strong>Esperar...</strong>
-                        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
-                    </div>
-                </div>
+            <div class="col-9">
+                <table id="example1" class="table table-bordered table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th class="text-center">No</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Email</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @forelse ($consultas as $consulta)
+                        <tr class="text-center">
+                            <td class="text-center">{{ $loop->index + 1 }}</td>
+                            <td class="text-center">{{ $consulta->name }}</td>
+                            <td class="text-center">{{ $consulta->description }}</td>
+                        </tr>
+                    @empty
+                        <p> No consulta found!</p>
+                    @endforelse
+                    </tbody>
+                </table>
             </div>
         </div>
-
     </div>
 @endsection
