@@ -4,21 +4,21 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateConsultasTable extends Migration
+class CreateUnidadesDeSaudesTable extends Migration
 {
     public function up()
     {
-        Schema::create('consultas', function (Blueprint $table) {
+        Schema::create('unidades_de_saudes', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name',40)->unique();
-            $table->string('description');
-            $table->dateTime('date');
+            $table->string('location',40)->unique();
+            $table->string('region',20)->unique();
             $table->timestamps();
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('consultas');
+        Schema::dropIfExists('unidades_de_saudes');
     }
 }
