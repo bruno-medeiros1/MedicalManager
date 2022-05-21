@@ -72,9 +72,13 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/consulta', 'ConsultasController@add_customer_form')->name('consulta.add');
 Route::post('/consulta', 'ConsultasController@submit_customer_data')->name('consulta.save');
 
-Route::get('/consulta/list', 'ConsultasController@fetch_all_customer')->name('consulta.list');
 
+//  Está a dar
+Route::get('/consulta/index', 'ConsultasController@fetch_all_customer')->name('consulta.index');
 Route::get('/consulta/edit/{consulta}', 'ConsultasController@edit_customer_form')->name('consulta.edit');
+
+
+
 Route::patch('/consulta/edit/{consulta}', 'ConsultasController@edit_customer_form_submit')->name('consulta.update');
 Route::get('/consulta/{consulta}', 'ConsultasController@view_single_customer')->name('consulta.view');
 Route::delete('/consulta/{consulta}', 'ConsultasController@delete_customer')->name('consulta.delete');

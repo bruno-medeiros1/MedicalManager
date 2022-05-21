@@ -43,18 +43,21 @@ class ConsultasController extends Controller
 
     }
 
+    //  ESTA A DAR
     public function fetch_all_customer()
     {
         $consultas = Consultas::toBase()->get();
         return view('consultas.index',compact('consultas'));
     }
 
-    public function edit_customer_form(Customer $customer)
+    //  ESTA A DAR
+    public function edit_customer_form(Consultas $consulta)
     {
-        return view('customer.edit',compact('customer'));
+        return view('consultas.edit',compact('consulta'));
     }
 
-    public function edit_customer_form_submit(Request $request, Customer $customer)
+    //
+    public function edit_customer_form_submit(Request $request, Consultas $consulta)
     {
         $rules = [
             'name' => 'required|min:6',
@@ -67,9 +70,9 @@ class ConsultasController extends Controller
 
         $this->validate($request, $rules, $errorMessage);
 
-        $customer->update([
+        $consulta->update([
             'name' => $request->name,
-            'email' => strtolower($request->email)
+            'description' => strtolower($request->email)
         ]);
 
         $this->meesage('message','Customer updated successfully!');

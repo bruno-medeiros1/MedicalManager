@@ -33,9 +33,9 @@
                         <ul class="nav nav-pills col-12 col-lg-auto me-lg-auto ps-3">
                             <li class="nav-item">
                                 @if(Request::url() === 'http://localhost/MedicalManager/public/consultas/index')
-                                    <a class="nav-link px-2 link-secondary active" aria-current="page" href="{{ URL::to("/consultas/index")}}">Consultas</a>
+                                    <a class="nav-link px-2 link-secondary active" aria-current="page" href="{{ URL::to("/consulta/index")}}">Consultas</a>
                                 @else
-                                    <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consultas/index")}}">Consultas</a>
+                                    <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consulta/index")}}">Consultas</a>
                                 @endif
                             </li>
                         </ul>

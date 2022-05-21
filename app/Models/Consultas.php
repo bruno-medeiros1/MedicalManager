@@ -10,4 +10,6 @@ class Consultas extends Model
     protected $fillable = [
         'name', 'description','date'
     ];
+
+
 }
