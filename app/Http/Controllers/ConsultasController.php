@@ -15,7 +15,7 @@ class ConsultasController extends Controller
     /*
         Retorna a view para adicionar
     */
-    public function add_customer_form()
+    public function add_consult_form()
     {
         if( \View::exists('consultas.create') ){
 
@@ -23,7 +23,7 @@ class ConsultasController extends Controller
         }
     }
 
-    public function submit_customer_data(Request $request)
+    public function submit_consult_data(Request $request)
     {
 
         $rules = [
@@ -55,14 +55,14 @@ class ConsultasController extends Controller
 
     //--------------------------------------------------------------------------------------------
     //  ESTA A DAR
-    public function fetch_all_customer()
+    public function fetch_all_consults()
     {
         $consultas = Consultas::toBase()->get();
         return view('consultas.index',compact('consultas'));
     }
 
     //  ESTA A DAR
-    public function edit_customer_form(Consultas $consulta)
+    public function edit_consult_form(Consultas $consulta)
     {
         //  create date time object
         $date = new DateTime($consulta->date);
@@ -75,7 +75,7 @@ class ConsultasController extends Controller
     }
 
     //  ESTA A DAR
-    public function edit_customer_form_submit(Request $request, Consultas $consulta)
+    public function edit_consult_form_submit(Request $request, Consultas $consulta)
     {
         $rules = [
             'name' => ['required','unique:consultas','max:20'],
@@ -104,12 +104,12 @@ class ConsultasController extends Controller
     }
 
     //--------------------------------------------------------------------------------------------
-    public function view_single_customer(Consultas $consulta)
+    public function view_single_consult(Consultas $consulta)
     {
         return view('consultas.view',compact('consulta'));
     }
 
-    public function delete_customer(Consultas $consulta)
+    public function delete_consult(Consultas $consulta)
     {
         echo 'chegou!';
 

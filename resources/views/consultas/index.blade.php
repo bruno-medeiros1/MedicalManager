@@ -9,16 +9,13 @@
 
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
                         <li class="mt-3 justify-content-center">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consulta/list")}}">Visualizar consulta</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page">Visualizar consulta</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consulta/create")}}">Adicionar consulta</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page">Adicionar consulta</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consulta/edit")}}">Editar consulta</a>
-                        </li>
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consulta/delete")}}">Apagar consulta</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page">Editar consulta</a>
                         </li>
                     </ul>
                 </nav>

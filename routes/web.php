@@ -67,13 +67,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //***********************************************************
 
-// ConsultasController.php
+// Rotas ConsultasController.php
 
-//  Está a dar
-Route::get('/consulta/add', 'ConsultasController@add_customer_form')->name('consulta.add');
-Route::post('/consulta/save', 'ConsultasController@submit_customer_data')->name('consulta.save');
-Route::get('/consulta/index', 'ConsultasController@fetch_all_customer')->name('consulta.index');
-Route::get('/consulta/edit/{consulta}', 'ConsultasController@edit_customer_form')->name('consulta.edit');
-Route::patch('/consulta/update/{consulta}', 'ConsultasController@edit_customer_form_submit')->name('consulta.update');
-Route::get('/consulta/view/{consulta}', 'ConsultasController@view_single_customer')->name('consulta.view');
-Route::get('/consulta/delete/{consulta}', 'ConsultasController@delete_customer')->name('consulta.delete');
+Route::get('/consulta/add', 'ConsultasController@add_consult_form')->name('consulta.add');
+Route::post('/consulta/save', 'ConsultasController@submit_consult_data')->name('consulta.save');
+Route::get('/consulta/index', 'ConsultasController@fetch_all_consults')->name('consulta.index');
+Route::get('/consulta/edit/{consulta}', 'ConsultasController@edit_consult_form')->name('consulta.edit');
+Route::patch('/consulta/update/{consulta}', 'ConsultasController@edit_consult_form_submit')->name('consulta.update');
+Route::get('/consulta/view/{consulta}', 'ConsultasController@view_single_consult')->name('consulta.view');
+Route::get('/consulta/delete/{consulta}', 'ConsultasController@delete_consult')->name('consulta.delete');
