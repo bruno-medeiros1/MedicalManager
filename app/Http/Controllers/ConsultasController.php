@@ -5,44 +5,56 @@ namespace App\Http\Controllers;
 use App\Models\Consultas;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use DateTime;
 
 
 class ConsultasController extends Controller
 {
 
+    /*
+        Retorna a view para adicionar
+    */
     public function add_customer_form()
     {
-        if( \View::exists('customer.create') ){
+        if( \View::exists('consultas.create') ){
 
-            return view('customer.create');
-
+            return view('consultas.create');
         }
     }
 
     public function submit_customer_data(Request $request)
     {
+        echo 'chegou!';
+
         $rules = [
-            'name' => 'required|min:6',
-            'email' => 'required|email|unique:customers'
+            'name' => ['required','unique:consultas','max:20'],
+            'description' => ['required'],
+            'date' => ['required'],
         ];
 
         $errorMessage = [
-            'required' => 'Enter your :attribute first.'
+            'required' => 'Este campo é obrigatório',
+            'unique' => 'Esse nome já existe. Insira outro por favor.'
         ];
 
         $this->validate($request, $rules, $errorMessage);
 
-        Customer::create([
+        $create = Consultas::create([
             'name' => $request->name,
-            'slug' => \Str::slug($request->name),
-            'email' => strtolower($request->email)
+            'description' => strtolower($request->description),
+            'date' => $request->date
         ]);
 
-        $this->meesage('message','Customer created successfully!');
+        if($create){
+            $this->meesage('message','Consulta adicionada com sucesso!');
+            return redirect('/consulta/index');
+        }
         return redirect()->back();
 
     }
 
+    //--------------------------------------------------------------------------------------------
     //  ESTA A DAR
     public function fetch_all_customer()
     {
@@ -53,41 +65,55 @@ class ConsultasController extends Controller
     //  ESTA A DAR
     public function edit_customer_form(Consultas $consulta)
     {
+        //  create date time object
+        $date = new DateTime($consulta->date);
+
+        //  sets the date into the correct format to use in html datetime-local input component
+        $consulta->date = $date->format('Y-m-d\TH:i');
+
+        //  returns the view
         return view('consultas.edit',compact('consulta'));
     }
 
-    //
+    //  ESTA A DAR
     public function edit_customer_form_submit(Request $request, Consultas $consulta)
     {
         $rules = [
-            'name' => 'required|min:6',
-            'email' => 'required|email|unique:customers'
+            'name' => ['required','unique:consultas','max:20'],
+            'description' => ['required'],
+            'date' => ['required'],
         ];
 
         $errorMessage = [
-            'required' => 'Enter your :attribute first.'
+            'required' => 'Este campo é obrigatório',
+            'unique' => 'Esse nome já existe. Insira outro por favor.'
         ];
 
         $this->validate($request, $rules, $errorMessage);
 
-        $consulta->update([
+        $update = $consulta->update([
             'name' => $request->name,
-            'description' => strtolower($request->email)
+            'description' => strtolower($request->description),
+            'date' => $request->date
         ]);
 
-        $this->meesage('message','Customer updated successfully!');
+        if($update){
+            $this->meesage('message','A consulta foi atualizada com sucesso!');
+            return redirect('/consulta/index');
+        }
         return redirect()->back();
     }
 
-    public function view_single_customer(Customer $customer)
+    //--------------------------------------------------------------------------------------------
+    public function view_single_customer(Consultas $consulta)
     {
-        return view('customer.view',compact('customer'));
+        return view('consultas.view',compact('consulta'));
     }
 
-    public function delete_customer(Customer $customer)
+    public function delete_customer(Consultas $consulta)
     {
-        $customer->delete();
-        $this->meesage('message','Customer deleted successfully!');
+        $consulta->delete();
+        $this->meesage('message','Consulta apagada com sucesso!');
         return redirect()->back();
     }
 
