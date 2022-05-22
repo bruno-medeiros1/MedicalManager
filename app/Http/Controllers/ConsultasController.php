@@ -25,7 +25,6 @@ class ConsultasController extends Controller
 
     public function submit_customer_data(Request $request)
     {
-        echo 'chegou!';
 
         $rules = [
             'name' => ['required','unique:consultas','max:20'],
@@ -112,6 +111,8 @@ class ConsultasController extends Controller
 
     public function delete_customer(Consultas $consulta)
     {
+        echo 'chegou!';
+
         $consulta->delete();
         $this->meesage('message','Consulta apagada com sucesso!');
         return redirect()->back();

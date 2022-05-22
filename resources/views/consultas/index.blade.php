@@ -62,10 +62,10 @@
                                             <a href="{{ URL::to("/consulta/edit", $consulta->id) }}" class="btn btn-sm btn-outline-dark py-0">
                                                 <i class="bi bi-pencil-fill"></i>
                                             </a>
-                                            <a href="{{ URL::to("/consulta/edit", $consulta->id) }}" class="btn btn-sm btn-outline-dark py-0">
+                                            <a href="{{ URL::to("/consulta/view", $consulta->id) }}" class="btn btn-sm btn-outline-dark py-0">
                                                 <i class="bi bi-eye-fill"></i>
                                             </a>
-                                            <a href="{{ URL::to("/consulta/edit", $consulta->id) }}" class="btn btn-sm btn-outline-danger py-0">
+                                            <a href="{{ URL::to("/consulta/delete", $consulta->id) }}" class="btn btn-sm btn-outline-danger py-0">
                                                 <i class="bi bi-trash-fill"></i>
                                             </a>
                                         </td>
