@@ -11,5 +11,4 @@ class Consultas extends Model
         'name', 'description','date'
     ];
 
-
 }

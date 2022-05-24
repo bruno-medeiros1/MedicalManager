@@ -17,15 +17,6 @@ Route::get('/', function () {
     return view('home');
 });
 
-/*
-Route::get('/consultas/index', function () {
-    if (Auth::check()) {
-        return view('/consultas/index');
-    }
-    return view('/includes/error');
-});
-*/
-
 Route::get('/admin/index', function () {
     if (Auth::check()) {
         return view('/admin/index');
@@ -33,12 +24,6 @@ Route::get('/admin/index', function () {
     return view('/includes/error');
 });
 
-Route::get('/admin/especialidades/index', function () {
-    if (Auth::check()) {
-        return view('/admin/especialidades/index');
-    }
-    return view('/includes/error');
-});
 
 Route::get('/admin/unidades/index', function () {
     if (Auth::check()) {
@@ -76,3 +61,23 @@ Route::get('/consulta/edit/{consulta}', 'ConsultasController@edit_consult_form')
 Route::patch('/consulta/update/{consulta}', 'ConsultasController@edit_consult_form_submit')->name('consulta.update');
 Route::get('/consulta/view/{consulta}', 'ConsultasController@view_single_consult')->name('consulta.view');
 Route::get('/consulta/delete/{consulta}', 'ConsultasController@delete_consult')->name('consulta.delete');
+
+//***********************************************************
+
+
+
+//***********************************************************
+
+// Rotas EspecialidadesController.php
+
+Route::get('admin/especialidades/add', 'EspecialidadesController@add_specialty_form')->name('admin.especialidades.add');
+Route::post('admin/especialidades/save', 'EspecialidadesController@submit_specialty_data')->name('admin.especialidades.save');
+Route::get('admin/especialidades/index', 'EspecialidadesController@fetch_all_specialties')->name('admin.especialidades.index');
+Route::get('admin/especialidades/edit/{especialidade}', 'EspecialidadesController@edit_specialty_form')->name('admin.especialidades.edit');
+Route::patch('admin/especialidades/update/{especialidade}', 'EspecialidadesController@edit_specialty_form_submit')->name('admin.especialidades.update');
+Route::get('admin/especialidades/view/{especialidade}', 'EspecialidadesController@view_single_specialty')->name('admin.especialidades.view');
+Route::get('admin/especialidades/delete/{especialidade}', 'EspecialidadesController@delete_specialty')->name('admin.especialidades.delete');
+
+//***********************************************************
+
+
