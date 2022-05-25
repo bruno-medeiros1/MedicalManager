@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2>Users Management</h2>
+                <h2>Pessoal médico</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('admin.pessoal.create') }}"> Create New User</a>
+                <a class="btn btn-success" href="{{ route('admin.pessoal.create') }}"> Criar novo utilizador</a>
             </div>
         </div>
     </div>
@@ -24,10 +24,10 @@
     <table class="table table-bordered">
         <tr>
             <th>No</th>
-            <th>Name</th>
+            <th>Nome</th>
             <th>Email</th>
-            <th>Roles</th>
-            <th width="280px">Action</th>
+            <th>Cargo</th>
+            <th width="280px">Ação</th>
         </tr>
         @foreach ($data as $key => $user)
             <tr>
@@ -42,11 +42,15 @@
                     @endif
                 </td>
                 <td>
-                    <a class="btn btn-primary" href="{{ route('admin.pessoal.show',$user->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('admin.pessoal.edit',$user->id) }}">Edit</a>
-                    {!! Form::open(['method' => 'DELETE','route' => ['admin.pessoal.destroy', $user->id],'style'=>'display:inline']) !!}
-                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
-                    {!! Form::close() !!}
+                    <a class="btn btn-light" href="{{ route('admin.pessoal.show',$user->id) }}"class="btn btn-sm btn-outline-danger py-0">
+                        <i class="bi bi-eye-fill"></i>
+                    </a>
+                    <a class="btn btn-light" href="{{ route('admin.pessoal.edit',$user->id) }}"class="btn btn-sm btn-outline-dark py-0">
+                        <i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a class="btn btn-light" href="{{ route('admin.pessoal.destroy', $user->id) }}" class="btn btn-sm btn-outline-danger py-0">
+                        <i class="bi bi-trash-fill"></i>
+                    </a>
                 </td>
             </tr>
         @endforeach

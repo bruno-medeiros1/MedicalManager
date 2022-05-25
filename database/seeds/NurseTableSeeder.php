@@ -5,18 +5,18 @@ use App\Models\User;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class UsersSeeder extends Seeder
+class NurseTableSeeder extends Seeder
 {
 
     public function run()
     {
         $user = User::create([
-            'name' => 'Bruno Medeiros',
-            'email' => 'admin@local.com',
+            'name' => 'Diana Medeiros',
+            'email' => 'enfermeira@local.com',
             'password' => bcrypt('123456')
         ]);
 
-        $role = Role::create(['name' => 'Admin']);
+        $role = Role::create(['name' => 'Nurse']);
 
         $permissions = Permission::pluck('id','id')->all();
 

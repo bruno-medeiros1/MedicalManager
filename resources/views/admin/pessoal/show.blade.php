@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Show User</h2>
+                <h2> Visualizar utilizador</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('admin.pessoal.index') }}"> Voltar</a>
@@ -17,7 +17,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Name:</strong>
+                <strong>Nome:</strong>
                 {{ $user->name }}
             </div>
         </div>
@@ -29,8 +29,12 @@
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
-                <strong>Roles:</strong>
-                <!--Adcionar aqui para ver os roles -->
+                <strong>Cargo:</strong>
+                @if(!empty($user->getRoleNames()))
+                    @foreach($user->getRoleNames() as $v)
+                        <p class="btn btn-info btn-block btn-sm text-left">{{ $v }}</p>
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>
