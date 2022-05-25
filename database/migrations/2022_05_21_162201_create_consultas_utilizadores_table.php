@@ -10,8 +10,8 @@ class CreateConsultasUtilizadoresTable extends Migration
     {
         Schema::create('consulas_utilizadores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_utilizador')->unsigned();
-            $table->integer('id_consulta')->unsigned();
+            $table->unsignedBigInteger('id_utilizador');
+            $table->unsignedBigInteger('id_consulta');
             $table->timestamps();
 
             /*Chaves estrangeiras*/

@@ -1,39 +1,60 @@
 @extends('layouts.app')
 
+
 @section('content')
-    <div class="container">
-
-        <div class="row h-100">
-            <div class="col-3 shadow p-3">
-                <nav id="sidebar">
-                    <span style="color: #636b6f;font-family: 'Nunito', sans-serif;font-weight: 300;font-size: 24px;display: table;margin: 0 auto;">Pessoal Médico<hr></span>
-
-                    <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="{{ URL::to("/admin/pessoal/index")}}">Adicionar utilizador</a>
-                        </li>
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/pessoal/edit")}}">Editar utilizador</a>
-                        </li>
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/pessoal/delete")}}">Apagar utilizador</a>
-                        </li>
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/pessoal/list")}}">Visualizar utilizadores</a>
-                        </li>
-                    </ul>
-                </nav>
+    <div class="row">
+        <div class="col-lg-12 margin-tb">
+            <div class="pull-left">
+                <h2>Users Management</h2>
             </div>
-
-            <div class="col-9 justify-content-center">
-                <div class="p-5 mb-4 bg-light rounded-3">
-                    <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">Site em manutenção</h1>
-                        <p class="col-md-8 fs-4">O website ainda se encontra em fase de desenvolvimento</p>
-                        <strong>Esperar...</strong>
-                        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
-                    </div>
-                </div>
+            <div class="pull-right">
+                <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
             </div>
         </div>
+    </div>
+
+
+    @if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th>No</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th width="280px">Action</th>
+        </tr>
+        @foreach ($data as $key => $user)
+            <tr>
+                <td>{{ ++$i }}</td>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td>
+                    @if(!empty($user->getRoleNames()))
+                        @foreach($user->getRoleNames() as $v)
+                            <label class="badge badge-success">{{ $v }}</label>
+                        @endforeach
+                    @endif
+                </td>
+                <td>
+                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
+                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                    {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+                    {!! Form::close() !!}
+                </td>
+            </tr>
+        @endforeach
+    </table>
+
+
+    {!! $data->render() !!}
+
+
+    <p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
 @endsection

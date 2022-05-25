@@ -8,33 +8,75 @@
                     <span style="color: #636b6f;font-family: 'Nunito', sans-serif;font-weight: 300;font-size: 24px;display: table;margin: 0 auto;">Unidades de Saúde<hr></span>
 
                     <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary active " aria-current="page" href="{{ URL::to("/admin/unidades/index")}}">Adicionar unidade</a>
+                        <li class="mt-3 justify-content-center">
+                            <a class="nav-link px-2 link-secondary " aria-current="page">Visualizar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/unidades/edit")}}">Editar unidade</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page">Adicionar unidade</a>
                         </li>
                         <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/unidades/delete")}}">Apagar unidade</a>
-                        </li>
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/admin/unidades/list")}}">Visualizar unidades</a>
+                            <a class="nav-link px-2 link-secondary " aria-current="page">Editar unidade</a>
                         </li>
                     </ul>
                 </nav>
             </div>
+            <div class="col-9">
 
-            <div class="col-9 justify-content-center">
-                <div class="p-5 mb-4 bg-light rounded-3">
-                    <div class="container-fluid py-5">
-                        <h1 class="display-5 fw-bold">Site em manutenção</h1>
-                        <p class="col-md-8 fs-4">O website ainda se encontra em fase de desenvolvimento</p>
-                        <strong>Esperar...</strong>
-                        <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2 style="font-weight: bold;">Página Inicial</h2>
+
+                            <a href="{{ URL::to("admin/unidades/add") }}" class="btn btn-light btn-block btn-sm custom_message text-left" style="float:right;border-color: black;">Adicionar unidade</a>
+
+                            @if(session()->has('message'))
+                                <p class="btn btn-success btn-block btn-sm custom_message text-left">{{ session()->get('message') }}</p><br>
+                            @endif
+
+                            <br>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <table id="example1" class="table table-bordered table-hover">
+                                <thead>
+                                <tr class="text-center">
+                                    <th class="text-center">No</th>
+                                    <th class="text-center">Nome</th>
+                                    <th class="text-center">Localização</th>
+                                    <th class="text-center">Região</th>
+                                    <th class="text-center">Ação</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @forelse ($unidades as $unidade)
+                                    <tr class="text-center">
+                                        <td class="text-center">{{ $loop->index + 1 }}</td>
+                                        <td class="text-center">{{ $unidade->name }}</td>
+                                        <td class="text-center">{{ $unidade->location }}</td>
+                                        <td class="text-center">{{ $unidade->region }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ URL::to("admin/unidades/edit", $unidade->id) }}" class="btn btn-sm btn-outline-dark py-0">
+                                                <i class="bi bi-pencil-fill"></i>
+                                            </a>
+                                            <a href="{{ URL::to("admin/unidades/view", $unidade->id) }}" class="btn btn-sm btn-outline-dark py-0">
+                                                <i class="bi bi-eye-fill"></i>
+                                            </a>
+                                            <a href="{{ URL::to("admin/unidades/delete", $unidade->id) }}" class="btn btn-sm btn-outline-danger py-0">
+                                                <i class="bi bi-trash-fill"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                @empty
+                                    <p> Não existem registos de unidades de saúde.</p>
+                                @endforelse
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
-
     </div>
 @endsection

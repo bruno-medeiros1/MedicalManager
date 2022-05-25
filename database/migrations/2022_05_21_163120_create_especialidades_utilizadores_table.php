@@ -10,8 +10,8 @@ class CreateEspecialidadesUtilizadoresTable extends Migration
     {
         Schema::create('especialidades_utilizadores', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_utilizador')->unsigned();
-            $table->integer('id_especialidade')->unsigned();
+            $table->unsignedBigInteger('id_utilizador');
+            $table->unsignedBigInteger('id_especialidade');
             $table->timestamps();
 
             /*Chaves estrangeiras*/

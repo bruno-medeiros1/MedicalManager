@@ -25,27 +25,6 @@ Route::get('/admin/index', function () {
 });
 
 
-Route::get('/admin/unidades/index', function () {
-    if (Auth::check()) {
-        return view('/admin/unidades/index');
-    }
-    return view('/includes/error');
-});
-
-Route::get('/admin/pessoal/index', function () {
-    if (Auth::check()) {
-        return view('/admin/pessoal/index');
-    }
-    return view('/includes/error');
-});
-
-Route::get('/admin/tipo/index', function () {
-    if (Auth::check()) {
-        return view('/admin/tipo/index');
-    }
-    return view('/includes/error');
-});
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -80,4 +59,20 @@ Route::get('admin/especialidades/delete/{especialidade}', 'EspecialidadesControl
 
 //***********************************************************
 
+// Rotas UnidadesDeSaudeController.php
+
+Route::get('admin/unidades/add', 'UnidadesDeSaudeController@add_health_center_form')->name('admin.unidades.add');
+Route::post('admin/unidades/save', 'UnidadesDeSaudeController@submit_health_center_data')->name('admin.unidades.save');
+Route::get('admin/unidades/index', 'UnidadesDeSaudeController@fetch_all_health_centers')->name('admin.unidades.index');
+Route::get('admin/unidades/edit/{unidade}', 'UnidadesDeSaudeController@edit_health_center_form')->name('admin.unidades.edit');
+Route::patch('admin/unidades/update/{unidade}', 'UnidadesDeSaudeController@edit_health_center_form_submit')->name('admin.unidades.update');
+Route::get('admin/unidades/view/{unidade}', 'UnidadesDeSaudeController@view_single_health_center')->name('admin.unidades.view');
+Route::get('admin/unidades/delete/{unidade}', 'UnidadesDeSaudeController@delete_health_center')->name('admin.unidades.delete');
+
+//***********************************************************
+
+Route::group(['middleware' => ['auth']], function() {
+    Route::resource('roles','RoleController');
+    Route::resource('users','UserController');
+});
 
