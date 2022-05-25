@@ -8,7 +8,7 @@
                 <h2>Users Management</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-success" href="{{ route('users.create') }}"> Create New User</a>
+                <a class="btn btn-success" href="{{ route('admin.pessoal.create') }}"> Create New User</a>
             </div>
         </div>
     </div>
@@ -37,24 +37,20 @@
                 <td>
                     @if(!empty($user->getRoleNames()))
                         @foreach($user->getRoleNames() as $v)
-                            <label class="badge badge-success">{{ $v }}</label>
+                            <p class="btn btn-info btn-block btn-sm text-left">{{ $v }}</p>
                         @endforeach
                     @endif
                 </td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-                    <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Edit</a>
-                    {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
+                    <a class="btn btn-primary" href="{{ route('admin.pessoal.show',$user->id) }}">Show</a>
+                    <a class="btn btn-primary" href="{{ route('admin.pessoal.edit',$user->id) }}">Edit</a>
+                    {!! Form::open(['method' => 'DELETE','route' => ['admin.pessoal.destroy', $user->id],'style'=>'display:inline']) !!}
                     {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                     {!! Form::close() !!}
                 </td>
             </tr>
         @endforeach
     </table>
-
-
     {!! $data->render() !!}
 
-
-    <p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
 @endsection

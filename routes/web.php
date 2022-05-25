@@ -71,8 +71,24 @@ Route::get('admin/unidades/delete/{unidade}', 'UnidadesDeSaudeController@delete_
 
 //***********************************************************
 
+
+//***********************************************************
+
+// Rotas UserController.php
+
+Route::get('admin/pessoal/create', 'UserController@create')->name('admin.pessoal.create');
+Route::post('admin/pessoal/store', 'UserController@submit')->name('admin.pessoal.store');
+Route::get('admin/pessoal/index', 'UserController@index')->name('admin.pessoal.index');
+Route::get('admin/pessoal/edit/{pessoa}', 'UserController@edit')->name('admin.pessoal.edit');
+Route::patch('admin/pessoal/update/{pessoa}', 'UserController@update')->name('admin.pessoal.update');
+Route::get('admin/pessoal/show/{pessoa}', 'UserController@show')->name('admin.pessoal.show');
+Route::get('admin/pessoal/destroy/{pessoa}', 'UserController@destroy')->name('admin.pessoal.destroy');
+
+//***********************************************************
+
+//mudar roles como temos o usercontroller
 Route::group(['middleware' => ['auth']], function() {
-    Route::resource('roles','RoleController');
-    Route::resource('users','UserController');
+    //Route::resource('users','UserController');
+    Route::resource('roles','RolesController');
 });
 

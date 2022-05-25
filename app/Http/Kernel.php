@@ -43,13 +43,6 @@ class Kernel extends HttpKernel
         ],
     ];
 
-    /**
-     * The application's route middleware.
-     *
-     * These middleware may be assigned to groups or used individually.
-     *
-     * @var array
-     */
     protected $routeMiddleware = [
         'auth' => \App\Http\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
@@ -66,13 +59,6 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
     ];
 
-    /**
-     * The priority-sorted list of middleware.
-     *
-     * This forces non-global middleware to always be in the given order.
-     *
-     * @var array
-     */
     protected $middlewarePriority = [
         \Illuminate\Session\Middleware\StartSession::class,
         \Illuminate\View\Middleware\ShareErrorsFromSession::class,
