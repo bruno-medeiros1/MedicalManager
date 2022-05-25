@@ -3,9 +3,8 @@
 use Illuminate\Database\Seeder;
 use App\Models\Consultas;
 
-class ConsultasSeeder extends Seeder
+class ConsultasTableSeeder extends Seeder
 {
-    /*  Seeding our Consult table */
     public function run()
     {
         $consulta = new Consultas();
