@@ -15,12 +15,6 @@ class MedicTableSeeder extends Seeder
             'password' => bcrypt('123456')
         ]);
 
-        $role = Role::create(['name' => 'Doctor']);
-
-        $permissions = Permission::pluck('id','id')->all();
-
-        $role->syncPermissions($permissions);
-
-        $user->assignRole([$role->id]);
+        $user->assignRole('Doctor');
     }
 }

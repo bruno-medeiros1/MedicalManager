@@ -9,7 +9,7 @@
             </div>
             <div class="pull-right">
                 @can('role-create')
-                    <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+                    <a class="btn btn-success" href="{{ route('admin.tipo.create') }}"> Create New Role</a>
                 @endcan
             </div>
         </div>
@@ -34,12 +34,12 @@
                 <td>{{ ++$i }}</td>
                 <td>{{ $role->name }}</td>
                 <td>
-                    <a class="btn btn-info" href="{{ route('roles.show',$role->id) }}">Show</a>
+                    <a class="btn btn-info" href="{{ route('admin.tipo.show',$role->id) }}">Show</a>
                     @can('role-edit')
-                        <a class="btn btn-primary" href="{{ route('roles.edit',$role->id) }}">Edit</a>
+                        <a class="btn btn-primary" href="{{ route('admin.tipo.edit',$role->id) }}">Edit</a>
                     @endcan
                     @can('role-delete')
-                        {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+                        {!! Form::open(['method' => 'DELETE','route' => ['admin.tipo.destroy', $role->id],'style'=>'display:inline']) !!}
                         {!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
                         {!! Form::close() !!}
                     @endcan
@@ -51,6 +51,4 @@
 
     {!! $roles->render() !!}
 
-
-    <p class="text-center text-primary"><small>Tutorial by ItSolutionStuff.com</small></p>
 @endsection

@@ -86,9 +86,18 @@ Route::get('admin/pessoal/destroy/{pessoa}', 'UserController@destroy')->name('ad
 
 //***********************************************************
 
-//mudar roles como temos o usercontroller
-Route::group(['middleware' => ['auth']], function() {
-    //Route::resource('users','UserController');
-    Route::resource('roles','RolesController');
-});
+//***********************************************************
+
+// Rotas RoleController.php
+
+Route::get('admin/tipo/create', 'RoleController@create')->name('admin.tipo.create');
+Route::post('admin/tipo/store', 'RoleController@submit')->name('admin.tipo.store');
+Route::get('admin/tipo/index', 'RoleController@index')->name('admin.tipo.index');
+Route::get('admin/tipo/edit/{role}', 'RoleController@edit')->name('admin.tipo.edit');
+Route::patch('admin/tipo/update/{role}', 'RoleController@update')->name('admin.tipo.update');
+Route::get('admin/tipo/show/{role}', 'RoleController@show')->name('admin.tipo.show');
+Route::get('admin/tipo/destroy/{role}', 'RoleController@destroy')->name('admin.tipo.destroy');
+
+//***********************************************************
+
 
