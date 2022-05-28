@@ -1,40 +1,40 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row h-100">
-            <div class="col-12">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-12">
-                            <h2 style="font-weight: bold;">Visualizar Consulta</h2>
+<div class="container">
 
-                            <form>
-                                @csrf
-                                <div class="form-group mt-4">
-                                    <label for="">Nome</label>
-                                    <input disabled type="text" class="form-control" name="name" placeholder="Insira um nome para a consulta" value="{{ $consulta->name}}">
-                                </div>
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5 h-40">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ asset('Images/consulta_background.png') }}" class="d-block mx-lg-auto img-fluid" loading="lazy">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">Visualizar consulta</h1>
 
-                                <div class="form-group mt-4">
-                                    <label for="">Descrição</label>
-                                    <textarea disabled type="text" class="form-control" placeholder="Insira uma descrição"  name="description" style="height: 150px;">{{ $consulta->description }}</textarea>
-                                </div>
-
-                                <div class="form-group mt-4">
-                                    <label for="">Data</label>
-                                    <input disabled type="datetime-local" class="form-control" name="date"  value="{{ $consulta->date }}">
-                                </div>
-
-                                <div class="form-group mt-4" >
-                                    <a href="{{ URL::to("/consulta/index") }}" class="btn btn-primary">Voltar</a>
-                                </div>
-
-                            </form>
-                        </div>
-                    </div>
+            <form>
+                @csrf
+                <div class="form-group mt-4">
+                    <label for="">Nome</label>
+                    <input disabled type="text" class="form-control" name="name" placeholder="Insira um nome para a consulta" value="{{ $consulta->name}}">
                 </div>
-            </div>
+
+                <div class="form-group mt-4">
+                    <label for="">Descrição</label>
+                    <textarea disabled type="text" class="form-control" placeholder="Insira uma descrição"  name="description" style="height: 150px;">{{ $consulta->description }}</textarea>
+                </div>
+
+                <div class="form-group mt-4">
+                    <label for="">Data</label>
+                    <input disabled type="datetime-local" class="form-control" name="date"  value="{{ $consulta->date }}">
+                </div>
+
+                <div class="form-group mt-4" >
+                    <a href="{{ URL::to("/consulta/index") }}" class="btn btn-primary">Voltar</a>
+                </div>
+
+            </form>
+
         </div>
     </div>
+
+</div>
 @endsection
