@@ -3,17 +3,24 @@
 <head>
     @include('includes.head')
 </head>
+<header class="row">
+    @include('includes.header')
+</header>
 <body>
-    <div class="container">
-        <header class="row">
-            @include('includes.header')
-        </header>
-        <div id="main" class=" row py-4">
-            @yield('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-2">
+                @include('includes.sidemenu')
+            </div>
+            <div class="col-10">
+                <div class="row py-4">
+                    @yield('content')
+                </div>
+                <footer class="row">
+                    @include('includes.footer')
+                </footer>
+            </div>
         </div>
-        <footer class="row">
-            @include('includes.footer')
-        </footer>
     </div>
 </body>
 </html>

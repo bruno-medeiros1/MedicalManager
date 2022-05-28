@@ -77,7 +77,7 @@ Route::get('admin/unidades/delete/{unidade}', 'UnidadesDeSaudeController@delete_
 // Rotas UserController.php
 
 Route::get('admin/pessoal/create', 'UserController@create')->name('admin.pessoal.create');
-Route::post('admin/pessoal/store', 'UserController@submit')->name('admin.pessoal.store');
+Route::post('admin/pessoal/store', 'UserController@store')->name('admin.pessoal.store');
 Route::get('admin/pessoal/index', 'UserController@index')->name('admin.pessoal.index');
 Route::get('admin/pessoal/edit/{pessoa}', 'UserController@edit')->name('admin.pessoal.edit');
 Route::patch('admin/pessoal/update/{pessoa}', 'UserController@update')->name('admin.pessoal.update');
@@ -91,7 +91,7 @@ Route::get('admin/pessoal/destroy/{pessoa}', 'UserController@destroy')->name('ad
 // Rotas RoleController.php
 
 Route::get('admin/tipo/create', 'RoleController@create')->name('admin.tipo.create');
-Route::post('admin/tipo/store', 'RoleController@submit')->name('admin.tipo.store');
+Route::post('admin/tipo/store', 'RoleController@store')->name('admin.tipo.store');
 Route::get('admin/tipo/index', 'RoleController@index')->name('admin.tipo.index');
 Route::get('admin/tipo/edit/{role}', 'RoleController@edit')->name('admin.tipo.edit');
 Route::patch('admin/tipo/update/{role}', 'RoleController@update')->name('admin.tipo.update');

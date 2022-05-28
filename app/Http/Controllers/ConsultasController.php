@@ -12,7 +12,13 @@ use Auth;
 
 class ConsultasController extends Controller
 {
-
+    function __construct()
+    {
+        $this->middleware('permission:lista-consultas|criar-consultas|editar-consultas|apagar-consultas', ['only' => ['index','store']]);
+        $this->middleware('permission:criar-consultas', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-consultas', ['only' => ['edit','update']]);
+        $this->middleware('permission:apagar-consultas', ['only' => ['destroy']]);
+    }
 
     public function add_consult_form()
     {

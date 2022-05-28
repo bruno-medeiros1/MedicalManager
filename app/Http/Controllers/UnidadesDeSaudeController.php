@@ -9,6 +9,14 @@ use Auth;
 
 class UnidadesDeSaudeController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:lista-unidades-de-saude|criar-unidades-de-saude|editar-unidades-de-saude|apagar-unidades-de-saude', ['only' => ['index','store']]);
+        $this->middleware('permission:criar-unidades-de-saude', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-unidades-de-saude', ['only' => ['edit','update']]);
+        $this->middleware('permission:apagar-unidades-de-saude', ['only' => ['destroy']]);
+    }
+
     public function add_health_center_form()
     {
         if (Auth::check()) {

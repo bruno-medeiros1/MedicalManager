@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-12 margin-tb">
             <div class="pull-left">
-                <h2> Show Role</h2>
+                <h2>Visualizar Tipo De Pessoal Médico</h2>
             </div>
             <div class="pull-right">
                 <a class="btn btn-primary" href="{{ route('admin.tipo.index') }}"> Voltar</a>

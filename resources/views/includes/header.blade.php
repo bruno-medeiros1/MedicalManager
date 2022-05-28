@@ -18,30 +18,15 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm">
+    <nav class="navbar navbar-expand-sm navbar-light bg-dark text-white shadow-sm">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{{ url('/') }}">
+            <a href="{{ URL::to("/")}}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
 
-                <a href="{{ URL::to("/")}}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+                <!-- As imagens devem ser inseridas na pasta public-->
+                <img src="{{ asset('Images/medical_icon.png') }}" alt="medicalManager" width="50" height="50">
+                <span class="fs-3" style="color:white;font-weight: bold;">Medical Manager</span>
 
-                    <!-- As imagens devem ser inseridas na pasta public-->
-                    <img src="{{ asset('Images/medical_icon.png') }}" alt="medicalManager" width="50" height="50">
-                    <span class="fs-3" style="font-weight: bold;">Medical Manager</span>
 
-                    @guest
-                    @else
-                        <ul class="nav nav-pills col-12 col-lg-auto me-lg-auto ps-3">
-                            <li class="nav-item">
-                                @if(Request::url() === 'http://localhost/MedicalManager/public/consultas/index')
-                                    <a class="nav-link px-2 link-secondary active" aria-current="page" href="{{ URL::to("/consulta/index")}}">Consultas</a>
-                                @else
-                                    <a class="nav-link px-2 link-secondary " aria-current="page" href="{{ URL::to("/consulta/index")}}">Consultas</a>
-                                @endif
-                            </li>
-                        </ul>
-                    @endguest
-
-                </a>
             </a>
 
             <!-- Right Side Of Navbar -->
@@ -56,23 +41,41 @@
                     @guest
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link" href="{{ route('login') }} "style="color:white;">{{ __('Login') }}</a>
                         </li>
                         @if (Route::has('register'))
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Registar') }}</a>
+                                <a class="nav-link" href="{{ route('register') }}" style="color:white;">{{ __('Registar') }}</a>
                             </li>
                         @endif
                     @else
-                    <!-- Autenticado -->
+                        <li class="nav-item">
+                            <i class="bi bi-bell-fill"></i>
+                        </li>
+                        <li class="nav-item">
+                            <a
+                                class="nav-link hidden-arrow"
+                                href="#"
+                                id="navbarDropdownMenuLink"
+                                role="button"
+                                data-mdb-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                <i class="fas fa-bell"></i>
+                                <span class="badge rounded-pill badge-notification bg-danger">3</span>
+                            </a>
+                        <li>
+
                         <div class="dropdown text-end">
                             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                                <span>{{ Auth::user()->name }}</span>
+                                <span style="color:white;">{{ Auth::user()->name }}</span>
                             </a>
                             <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
                                 <li><a class="dropdown-item" href="#">Perfil</a></li>
-                                <li><a class="dropdown-item" href="{{ URL::to("/admin/index")}}">Admin</a></li>
+                                @can('index-admin')
+                                    <li><a class="dropdown-item" href="{{ URL::to("/admin/index")}} ">Admin</a></li>
+                                @endcan
                                 <li><a class="dropdown-item" href="#">Definições</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>

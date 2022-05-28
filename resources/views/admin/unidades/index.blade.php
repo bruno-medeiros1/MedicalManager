@@ -27,7 +27,9 @@
                         <div class="col-12">
                             <h2 style="font-weight: bold;">Página Inicial</h2>
 
-                            <a href="{{ URL::to("admin/unidades/add") }}" class="btn btn-light btn-block btn-sm custom_message text-left" style="float:right;border-color: black;">Adicionar unidade</a>
+                            @can('criar-unidades-de-saude')
+                              <a href="{{ URL::to("admin/unidades/add") }}" class="btn btn-light btn-block btn-sm custom_message text-left" style="float:right;border-color: black;">Adicionar unidade</a>
+                            @endcan
 
                             @if(session()->has('message'))
                                 <p class="btn btn-success btn-block btn-sm custom_message text-left">{{ session()->get('message') }}</p><br>
@@ -56,15 +58,21 @@
                                         <td class="text-center">{{ $unidade->location }}</td>
                                         <td class="text-center">{{ $unidade->region }}</td>
                                         <td class="text-center">
-                                            <a href="{{ URL::to("admin/unidades/edit", $unidade->id) }}" class="btn btn-sm btn-outline-dark py-0">
-                                                <i class="bi bi-pencil-fill"></i>
-                                            </a>
-                                            <a href="{{ URL::to("admin/unidades/view", $unidade->id) }}" class="btn btn-sm btn-outline-dark py-0">
-                                                <i class="bi bi-eye-fill"></i>
-                                            </a>
-                                            <a href="{{ URL::to("admin/unidades/delete", $unidade->id) }}" class="btn btn-sm btn-outline-danger py-0">
-                                                <i class="bi bi-trash-fill"></i>
-                                            </a>
+                                            @can('lista-unidades-de-saude')
+                                                <a href="{{ URL::to("admin/unidades/view", $unidade->id) }}" class="btn btn-sm btn-outline-dark py-0">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </a>
+                                            @endcan
+                                            @can('editar-unidades-de-saude')
+                                                <a href="{{ URL::to("admin/unidades/edit", $unidade->id) }}" class="btn btn-sm btn-outline-dark py-0">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </a>
+                                            @endcan
+                                            @can('apagar-unidades-de-saude')
+                                                <a href="{{ URL::to("admin/unidades/delete", $unidade->id) }}" class="btn btn-sm btn-outline-danger py-0">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @empty

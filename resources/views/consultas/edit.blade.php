@@ -52,7 +52,6 @@
                                     <input type="submit" class="btn btn-primary" value="Atualizar">
                                     <a href="{{ URL::to("/consulta/index") }}" class="btn btn-danger">Cancelar</a>
                                 </div>
-
                             </form>
                         </div>
                     </div>

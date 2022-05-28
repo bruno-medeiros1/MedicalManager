@@ -12,10 +12,10 @@ class RoleController extends Controller
 
     function __construct()
     {
-        $this->middleware('permission:role-list|role-create|role-edit|role-delete', ['only' => ['index','store']]);
-        $this->middleware('permission:role-create', ['only' => ['create','store']]);
-        $this->middleware('permission:role-edit', ['only' => ['edit','update']]);
-        $this->middleware('permission:role-delete', ['only' => ['destroy']]);
+          $this->middleware('permission:lista-tipos-de-pessoal-medico|criar-tipos-de-pessoal-medico|editar-tipos-de-pessoal-medico|apagar-tipos-de-pessoal-medico', ['only' => ['index','store']]);
+          $this->middleware('permission:criar-tipos-de-pessoal-medico', ['only' => ['create','store']]);
+          $this->middleware('permission:editar-tipos-de-pessoal-medico', ['only' => ['edit','update']]);
+          $this->middleware('permission:apagar-tipos-de-pessoal-medico', ['only' => ['destroy']]);
     }
 
 
@@ -36,16 +36,23 @@ class RoleController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required|unique:roles,name',
+        $rules = [
+            'name' => 'required',
             'permission' => 'required',
-        ]);
+        ];
+
+        $errorMessage = [
+            'required' => 'Este campo é obrigatório',
+            'permission.required' => 'Selecione pelo menos 1 permissão',
+        ];
+
+        $this->validate($request, $rules,$errorMessage);
 
         $role = Role::create(['name' => $request->input('name')]);
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('admin.tipo.index')
-            ->with('success','Role created successfully');
+            ->with('success','Grupo de Utilizador adicionado com sucesso!');
     }
 
     public function show($id)
@@ -72,10 +79,17 @@ class RoleController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $rules = [
             'name' => 'required',
             'permission' => 'required',
-        ]);
+        ];
+
+        $errorMessage = [
+            'required' => 'Este campo é obrigatório',
+            'permission.required' => 'Selecione pelo menos 1 permissão',
+        ];
+
+        $this->validate($request, $rules,$errorMessage);
 
         $role = Role::find($id);
         $role->name = $request->input('name');
@@ -84,7 +98,7 @@ class RoleController extends Controller
         $role->syncPermissions($request->input('permission'));
 
         return redirect()->route('admin.tipo.index')
-            ->with('success','Role updated successfully');
+            ->with('success','Grupo de Utilizador atualizado com sucesso!');
     }
 
     public function destroy($id)

@@ -11,6 +11,13 @@ use Hash;
 
 class UserController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:lista-pessoal-medico|criar-pessoal-medico|editar-pessoal-medico|apagar-pessoal-medico', ['only' => ['index','store']]);
+        $this->middleware('permission:criar-pessoal-medico', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-pessoal-medico', ['only' => ['edit','update']]);
+        $this->middleware('permission:apagar-pessoal-medico', ['only' => ['destroy']]);
+    }
 
     public function index(Request $request)
     {
@@ -29,12 +36,21 @@ class UserController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|email|unique:users',
             'password' => 'required|same:confirm-password',
+            'confirm-password' => 'required',
             'roles' => 'required'
-        ]);
+        ];
+
+        $errorMessage = [
+            'required' => 'Este campo é obrigatório',
+            'unique' => 'Esse email já existe atribuído a outro utilizador. Insira outro por favor.',
+            'same' => 'As passwords não coincidem'
+        ];
+
+        $this->validate($request, $rules,$errorMessage);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -43,7 +59,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.pessoal.index')
-            ->with('success','User created successfully');
+            ->with('success','Utilizador criado com sucesso!');
     }
 
 
@@ -66,12 +82,21 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
-            'password' => 'same:confirm-password',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|same:confirm-password',
+            'confirm-password' => 'required',
             'roles' => 'required'
-        ]);
+        ];
+
+        $errorMessage = [
+            'required' => 'Este campo é obrigatório',
+            'unique' => 'Esse email já existe atribuído a outro utilizador. Insira outro por favor.',
+            'same' => 'As passwords não coincidem'
+        ];
+
+        $this->validate($request, $rules,$errorMessage);
 
         $input = $request->all();
         if(!empty($input['password'])){
@@ -87,7 +112,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('admin.pessoal.index')
-            ->with('success','User updated successfully');
+            ->with('success','Utilizador atualizado com sucesso!');
     }
 
 
@@ -95,6 +120,6 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         return redirect()->route('admin.pessoal.index')
-            ->with('success','User deleted successfully');
+            ->with('success','O utilizador foi apagado com sucesso!');
     }
 }

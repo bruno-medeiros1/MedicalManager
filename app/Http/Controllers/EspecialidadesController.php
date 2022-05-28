@@ -10,6 +10,14 @@ use Auth;
 
 class EspecialidadesController extends Controller
 {
+    function __construct()
+    {
+        $this->middleware('permission:lista-especialidades|criar-especialidades|editar-especialidades|apagar-especialidades', ['only' => ['index','store']]);
+        $this->middleware('permission:criar-especialidades', ['only' => ['create','store']]);
+        $this->middleware('permission:editar-especialidades', ['only' => ['edit','update']]);
+        $this->middleware('permission:apagar-especialidades', ['only' => ['destroy']]);
+    }
+
     public function add_specialty_form()
     {
         if (Auth::check()) {

@@ -27,7 +27,10 @@
                         <div class="col-12">
                             <h2 style="font-weight: bold;">Página Inicial</h2>
 
-                            <a href="{{ URL::to("/consulta/add") }}" class="btn btn-light btn-block btn-sm custom_message text-left" style="float:right;border-color: black;">Adicionar consulta</a>
+                            @can('criar-consultas')
+                                <a href="{{ URL::to("/consulta/add") }}" class="btn btn-light btn-block btn-sm custom_message text-left" style="float:right;border-color: black;">Adicionar consulta</a>
+                            @endcan
+
 
                             @if(session()->has('message'))
                                 <p class="btn btn-success btn-block btn-sm custom_message text-left">{{ session()->get('message') }}</p><br>
@@ -56,15 +59,21 @@
                                         <td class="text-center">{{ $consulta->description }}</td>
                                         <td class="text-center">{{ $consulta->date }}</td>
                                         <td class="text-center">
-                                            <a class="btn btn-light" href="{{ URL::to("/consulta/edit", $consulta->id) }}" class="btn btn-sm btn-outline-dark py-0">
-                                                <i class="bi bi-pencil-fill"></i>
-                                            </a>
-                                            <a class="btn btn-light" href="{{ URL::to("/consulta/view", $consulta->id) }}" class="btn btn-sm btn-outline-dark py-0">
-                                                <i class="bi bi-eye-fill"></i>
-                                            </a>
-                                            <a class="btn btn-light" href="{{ URL::to("/consulta/delete", $consulta->id) }}" class="btn btn-sm btn-outline-danger py-0">
-                                                <i class="bi bi-trash-fill"></i>
-                                            </a>
+                                            @can('lista-consultas')
+                                                <a class="btn btn-light" href="{{ URL::to("/consulta/view", $consulta->id) }}" class="btn btn-sm btn-outline-dark py-0">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </a>
+                                            @endcan
+                                            @can('editar-consultas')
+                                                <a class="btn btn-light" href="{{ URL::to("/consulta/edit", $consulta->id) }}" class="btn btn-sm btn-outline-dark py-0">
+                                                    <i class="bi bi-pencil-fill"></i>
+                                                </a>
+                                            @endcan
+                                            @can('apagar-consultas')
+                                                <a class="btn btn-light" href="{{ URL::to("/consulta/delete", $consulta->id) }}" class="btn btn-sm btn-outline-danger py-0">
+                                                    <i class="bi bi-trash-fill"></i>
+                                                </a>
+                                            @endcan
                                         </td>
                                     </tr>
                                 @empty
