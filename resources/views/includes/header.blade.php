@@ -32,8 +32,8 @@
             <!-- Right Side Of Navbar -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" data-dashlane-rid="f6cde14e05fb383f" data-form-type="">
-                    <input type="search" class="form-control" placeholder="Pesquisar..." aria-label="Search" data-dashlane-rid="be0bba0efa9b9f87" data-form-type="">
+                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                    <input type="search" class="form-control" placeholder="Pesquisar..." aria-label="Search" >
                 </form>
 
                 <ul class="navbar-nav ">
@@ -49,21 +49,10 @@
                             </li>
                         @endif
                     @else
-                        <li class="nav-item">
-                            <i class="bi bi-bell-fill"></i>
-                        </li>
-                        <li class="nav-item">
-                            <a
-                                class="nav-link hidden-arrow"
-                                href="#"
-                                id="navbarDropdownMenuLink"
-                                role="button"
-                                data-mdb-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                <i class="fas fa-bell"></i>
-                                <span class="badge rounded-pill badge-notification bg-danger">3</span>
-                            </a>
+
+                        <li class="nav-item" style="padding-right: 15px;">
+                            🔔
+                            <span class="badge rounded-pill badge-notification bg-danger">3</span>
                         <li>
 
                         <div class="dropdown text-end">
@@ -81,7 +70,6 @@
                                 <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                         Terminar Sessão
-                                        <i class="bi bi-box-arrow-in-right"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

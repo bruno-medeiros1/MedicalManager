@@ -45,7 +45,7 @@
                     <img style="width:150px;height:150px; object-fit:cover; border-radius:30px" src="{{ asset('Images/pessoal.png') }}" class="card-img-top" height="200px" >
                     <div class="card-body">
                         <h5 class="card-title">Pessoal Médico</h5>
-                        <p class="card-text">Aqui poderás desde criar, editar, apagar e visualizar todo o pessoal médico existente.</p>
+                        <p class="card-text">Aqui poderás desde criar, editar, apagar e visualizar todo o pessoal médico existente na aplicação.</p>
 
                         @can('index-pessoal-medico')
                             <a href="{{ URL::to("/admin/pessoal/index")}}" class="btn btn-primary">Configurar</a>

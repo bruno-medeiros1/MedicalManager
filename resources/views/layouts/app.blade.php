@@ -13,7 +13,7 @@
                 @include('includes.sidemenu')
             </div>
             <div class="col-10">
-                <div class="row py-4">
+                <div class="row py-4 p-0">
                     @yield('content')
                 </div>
                 <footer class="row">

@@ -3,24 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row h-100">
-            <div class="col-3 shadow p-3">
-                <nav id="sidebar">
-                    <span style="color: #636b6f;font-family: 'Nunito', sans-serif;font-weight: 300;font-size: 24px;display: table;margin: 0 auto;">Consultas<hr></span>
-
-                    <ul style="display:inline-table;" class="nav nav-pills nav-stacked ms-4 mt-3" >
-                        <li class="mt-3 justify-content-center">
-                            <a class="nav-link px-2 link-secondary " aria-current="page">Visualizar consulta</a>
-                        </li>
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page">Adicionar consulta</a>
-                        </li>
-                        <li class="mt-3">
-                            <a class="nav-link px-2 link-secondary " aria-current="page">Editar consulta</a>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
-            <div class="col-9">
+            <div class="col-12">
 
                 <div class="container">
                     <div class="row">
