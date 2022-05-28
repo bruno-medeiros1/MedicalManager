@@ -13,13 +13,13 @@
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="margin-left:-15px; width: 100%; height: 90vh;">
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">
-                @if(!Request::is('/'))
-                    <a  href="{{ URL::to("/") }}" class="nav-link text-white" aria-current="page">
+                @if(!Request::is('home'))
+                    <a  href="{{ URL::to("/home") }}" class="nav-link text-white" aria-current="page">
                         <i class="bi bi-house-fill"></i>
                         Início
                     </a>
                 @else
-                    <a  href="{{ URL::to("/") }}" class="nav-link active text-white" aria-current="page">
+                    <a  href="{{ URL::to("/home") }}" class="nav-link active text-white" aria-current="page">
                         <i class="bi bi-house-fill"></i>
                         Início
                     </a>
@@ -78,16 +78,16 @@
                 @endif
             </li>
             <li>
-                @if(!Request::is('admin/pessoal/*'))
+                @if(!Request::is('admin/tipo/*'))
                     @can('index-tipos-de-pessoal-medico')
-                        <a href="{{ URL::to("/admin/pessoal/index") }}" class="nav-link text-white">
+                        <a href="{{ URL::to("/admin/tipo/index") }}" class="nav-link text-white">
                             <i class="bi bi-people-fill"></i>
                             Grupos de utilizadores
                         </a>
                     @endcan
                 @else
                     @can('index-tipos-de-pessoal-medico')
-                        <a href="{{ URL::to("/admin/pessoal/index") }}" class="nav-link active text-white">
+                        <a href="{{ URL::to("/admin/tipo/index") }}" class="nav-link active text-white">
                             <i class="bi bi-people-fill"></i>
                             Grupos de utilizadores
                         </a>
@@ -95,29 +95,25 @@
                 @endif
             </li>
             <li>
-                @if(!Request::is('admin/tipo/*'))
+                @if(!Request::is('admin/pessoal/*'))
                     @can('index-pessoal-medico')
-                        <div class="dropdown">
-                        <a href="{{ URL::to("/admin/tipo/index") }}" class="nav-link text-white">
+                        <a href="{{ URL::to("/admin/pessoal/index") }}" class="nav-link text-white">
                             <i class="bi bi-person-circle"></i>
                             Utilizadores
                         </a>
                     @endcan
                 @else
                     @can('index-pessoal-medico')
-                        <div class="dropdown">
-                            <a href="{{ URL::to("/admin/tipo/index") }}" class="nav-link active text-white">
+                            <a href="{{ URL::to("/admin/pessoal/index") }}" class="nav-link active text-white">
                                 <i class="bi bi-person-circle"></i>
                                 Utilizadores
                             </a>
                     @endcan
                 @endif
-                <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                </ul>
-                </div>
-
             </li>
+        </ul>
+        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">New project...</a></li>
         </ul>
         <hr>
             <a>

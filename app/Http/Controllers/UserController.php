@@ -38,7 +38,7 @@ class UserController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email' => 'required|unique:users,email',
             'password' => 'required|same:confirm-password',
             'confirm-password' => 'required',
             'roles' => 'required'
@@ -84,7 +84,7 @@ class UserController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|email|unique:users',
+            'email'  =>  'required|email|unique:users,email,'.$id,
             'password' => 'required|same:confirm-password',
             'confirm-password' => 'required',
             'roles' => 'required'

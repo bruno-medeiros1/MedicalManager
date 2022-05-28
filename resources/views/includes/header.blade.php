@@ -20,7 +20,7 @@
 <body>
     <nav class="navbar navbar-expand-sm navbar-light bg-dark text-white shadow-sm">
         <div class="container-fluid">
-            <a href="{{ URL::to("/")}}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            <a href="{{ URL::to("/home")}}" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
 
                 <!-- As imagens devem ser inseridas na pasta public-->
                 <img src="{{ asset('Images/medical_icon.png') }}" alt="medicalManager" width="50" height="50">
@@ -32,9 +32,12 @@
             <!-- Right Side Of Navbar -->
             <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
 
-                <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-                    <input type="search" class="form-control" placeholder="Pesquisar..." aria-label="Search" >
-                </form>
+                @guest
+                @else
+                    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
+                        <input type="search" class="form-control" placeholder="Pesquisar..." aria-label="Search" >
+                    </form>
+                @endguest
 
                 <ul class="navbar-nav ">
                     <!-- Não Autenticado -->
@@ -56,7 +59,7 @@
                         <li>
 
                         <div class="dropdown text-end">
-                            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a href="#" class="d-block link-white text-decoration-none text-white dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
                                 <span style="color:white;">{{ Auth::user()->name }}</span>
                             </a>
